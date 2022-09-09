@@ -12,11 +12,15 @@ const getComputerChoice = () => {
 
 // function to play a single round of rock paper scissors
 const playRound = (playerSelection, computerSelection) => {
-    if ((playerSelection.toLowerCase()=='rock' && computerSelection=='scissors') || (playerSelection.toLowerCase()=='paper' && computerSelection=='rock') || (playerSelection.toLowerCase()=='scissors' && computerSelection=='paper')) {
+    if ((playerSelection.toLowerCase()=='rock' && computerSelection=='scissors') || 
+        (playerSelection.toLowerCase()=='paper' && computerSelection=='rock') || 
+        (playerSelection.toLowerCase()=='scissors' && computerSelection=='paper')) {
         console.log(`You Win! ${playerSelection.toLowerCase()} beats ${computerSelection}!`);
         return 'W';
     }
-    else if ((computerSelection=='rock' && playerSelection.toLowerCase()=='scissors') || (computerSelection=='paper' && playerSelection.toLowerCase()=='rock') || (computerSelection=='scissors' && playerSelection.toLowerCase()=='paper')) {
+    else if ((computerSelection=='rock' && playerSelection.toLowerCase()=='scissors') || 
+        (computerSelection=='paper' && playerSelection.toLowerCase()=='rock') || 
+        (computerSelection=='scissors' && playerSelection.toLowerCase()=='paper')) {
         console.log(`You Lose! ${computerSelection} beats ${playerSelection.toLowerCase()}!`);
         return 'L';
     }
