@@ -37,30 +37,6 @@ const playRound = (playerSelection, computerSelection) => {
     }
 }
 
-// function to play a 5 round game of rock paper scissors
-const playGame = () => {
-    
-
-    // for (let i = 0; i < 5; i++) {
-    //     let result = playRound(prompt('rock, paper, scissors?'), getComputerChoice());
-
-    //     if (result == 'W')
-    //         userScore++;
-    //     else if (result == 'L')
-    //         compScore++;
-    // }
-    
-    console.log('user: ', uScore);
-    console.log('computer: ', cScore);
-
-    // if (uScore > cScore)
-    //     return `You win the game with ${uScore}/5 wins!`;
-    // else if (uScore < cScore)
-    //     return `Computer wins the game with ${cScore}/5 wins!`;
-    // else
-    //     return 'It\'s a tie, try another round to see a winner!';
-}
-
 userButtons.forEach((button) => {
     button.addEventListener('click', () => {
         if (uScore < 5 && cScore < 5) {
@@ -78,8 +54,6 @@ userButtons.forEach((button) => {
 
             console.log('user: ', uScore);
             console.log('comp: ', cScore);
-        } else {
-            console.log('GAME OVER - ', uScore,' : ', cScore);
         }
     })
 });
