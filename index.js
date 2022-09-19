@@ -3,6 +3,9 @@ const result = document.getElementById('result');
 const userScore = document.getElementById('user-score');
 const compScore = document.getElementById('comp-score');
 
+let uScore = 0; 
+let cScore = 0;
+
 // function returns either rock, paper or scissors randomly
 const getComputerChoice = () => {
     let compChoice = Math.floor(Math.random() * 3);
@@ -36,8 +39,7 @@ const playRound = (playerSelection, computerSelection) => {
 
 // function to play a 5 round game of rock paper scissors
 const playGame = () => {
-    let uScore = 0; 
-    let cScore = 0;
+    
 
     // for (let i = 0; i < 5; i++) {
     //     let result = playRound(prompt('rock, paper, scissors?'), getComputerChoice());
@@ -47,20 +49,9 @@ const playGame = () => {
     //     else if (result == 'L')
     //         compScore++;
     // }
-
-    userButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-            let roundResult = playRound(button.id, getComputerChoice());
-            if (roundResult == 'W') {
-                uScore++
-                userScore.textContent = `${uScore}`;
-            }
-            else if (roundResult == 'L') {
-                cScore++;
-                compScore.textContent = `${cScore}`;
-            }
-        })
-    });
+    
+    console.log('user: ', uScore);
+    console.log('computer: ', cScore);
 
     // if (uScore > cScore)
     //     return `You win the game with ${uScore}/5 wins!`;
@@ -70,6 +61,25 @@ const playGame = () => {
     //     return 'It\'s a tie, try another round to see a winner!';
 }
 
+userButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (uScore < 5 && cScore < 5) {
+            let roundResult = playRound(button.id, getComputerChoice());
+            if (roundResult == 'W') {
+                uScore++
+                userScore.textContent = `${uScore}`;
+            } else if (roundResult == 'L') {
+                cScore++;
+                compScore.textContent = `${cScore}`;
+            }
 
+            if (uScore == 5 || cScore == 5)
+                console.log('GAME OVER - ');
 
-playGame();
+            console.log('user: ', uScore);
+            console.log('comp: ', cScore);
+        } else {
+            console.log('GAME OVER - ', uScore,' : ', cScore);
+        }
+    })
+});
