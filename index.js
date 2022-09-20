@@ -1,3 +1,4 @@
+const userFeedback = document.getElementById('user-feedback');
 const userButtons = document.querySelectorAll('.user');
 const result = document.getElementById('result');
 const userScore = document.getElementById('user-score');
@@ -22,17 +23,17 @@ const playRound = (playerSelection, computerSelection) => {
     if ((playerSelection.toLowerCase()=='rock' && computerSelection=='scissors') || 
         (playerSelection.toLowerCase()=='paper' && computerSelection=='rock') || 
         (playerSelection.toLowerCase()=='scissors' && computerSelection=='paper')) {
-        result.textContent = `You Win! ${playerSelection.toLowerCase()} beats ${computerSelection}!`;
+        result.textContent = `you win this round... ${playerSelection.toLowerCase()} beats ${computerSelection}.`;
         return 'W';
     }
     else if ((computerSelection=='rock' && playerSelection.toLowerCase()=='scissors') || 
         (computerSelection=='paper' && playerSelection.toLowerCase()=='rock') || 
         (computerSelection=='scissors' && playerSelection.toLowerCase()=='paper')) {
-            result.textContent = `You Lose! ${computerSelection} beats ${playerSelection.toLowerCase()}!`;
+            result.textContent = `this round is mine! ${computerSelection} beats ${playerSelection.toLowerCase()}!`;
         return 'L';
     }
     else {
-        result.textContent = `Its a tie! you both played ${playerSelection}!`;
+        result.textContent = `this round's a tie, we both played ${playerSelection}!`;
         return 'T';
     }
 }
@@ -49,8 +50,13 @@ userButtons.forEach((button) => {
                 compScore.textContent = `${cScore}`;
             }
 
-            if (uScore == 5 || cScore == 5)
-                console.log('GAME OVER - ');
+            if (uScore == 5 || cScore == 5) {
+                uScore == 5 ? 
+                userFeedback.textContent = `GAME OVER, you win I guess.. ${uScore} - ${cScore}..` : 
+                userFeedback.textContent =`Game Over, I win! ${cScore} - ${uScore}!`;
+
+                result.textContent = 'refresh this page to play again';
+            }
 
             console.log('user: ', uScore);
             console.log('comp: ', cScore);
